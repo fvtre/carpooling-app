@@ -1,0 +1,54 @@
+.input {
+    grid-area: input;
+    width: 60vw; /* Ajusta el ancho al 60% del ancho de la ventana */
+    max-width: 300px; /* Limita el ancho máximo a 300px */
+    font: inherit;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 0.7rem 1.5rem;
+    background-color: #fff; /* Fondo blanco por defecto */
+    color: #000; /* Texto negro por defecto */
+  }
+  
+  .label_name {
+    grid-area: input;
+    z-index: 100;
+    width: max-content;
+    margin-left: 1rem;
+    padding: 0 0.5rem;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+    transform-origin: center left;
+    color: inherit; /* Esto tomará el color del input */
+  }
+  
+  .label {
+    width: max-content;
+    margin: 35px auto;
+    display: grid;
+    grid-template-areas: "input";
+  }
+  
+  .input:focus + .label_name,
+  .input:not(:placeholder-shown) + .label_name {
+    transform: translateY(-50%) scale(0.7);
+    background-color: white; /* Cambia a blanco en el enfoque */
+  }
+  
+  .logo {
+    width: 15vw;
+    max-width: 300px;
+    margin: 5px auto;
+    display: block;
+  }
+
+  .button-container {
+    margin: 20px 0; /* Espaciado entre el formulario y los botones */
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    gap: 10px; /* Espacio entre los botones */
+  }
+  

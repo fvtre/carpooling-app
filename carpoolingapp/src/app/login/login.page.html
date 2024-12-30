@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Login de usuario</h2>
+  <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+    <label class="label">
+      <input formControlName="email" type="text" placeholder=" " class="input">
+      <span class="label_name">Email</span>
+    </label>
+    <div *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched" class="error-message">
+      El correo debe ser válido.
+    </div>
+
+    <label class="label">
+      <input formControlName="password" type="password" placeholder=" " class="input">
+      <span class="label_name">Contraseña</span>
+    </label>
+    <div *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched" class="error-message">
+      La contraseña debe tener al menos 6 caracteres.
+    </div>
+
+    <ion-button expand="full" type="submit" [disabled]="!formLogin.valid">Enviar</ion-button>
+    <div *ngIf="errorMessage" class="error-message" style="color: red; margin-top: 10px;">
+      {{ errorMessage }}
+    </div>
+  </form>
+  
+  <div class="button-container">
+    <ion-button (click)="goToRegister()">Crear una Cuenta</ion-button>
+    <ion-button  (click)="goToRecoverPassword()">Recuperar Contraseña</ion-button>
+    <ion-button (click)="onClick()">Login With Google</ion-button>
+  </div>
+  
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

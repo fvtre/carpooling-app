@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+    <ion-buttons slot="end"></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Registro de usuario</h2>
+  <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
+    
+    <label class="label">
+      <input formControlName="email" type="text" placeholder=" " class="input">
+      <span class="label_name">Email</span>
+    </label>
+
+    <label class="label">
+      <input formControlName="password" type="password" placeholder=" " class="input">
+      <span class="label_name">Contraseña</span>
+    </label>
+
+    <ion-button expand="full" type="submit" [disabled]="!formReg.valid">Enviar</ion-button>
+  </form>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

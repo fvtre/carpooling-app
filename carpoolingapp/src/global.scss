@@ -1,0 +1,175 @@
+/* App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally.
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* Ionic Dark Mode */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Botones personalizados */
+ion-button {
+    --background: #f5a335;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --ripple-color: #d3d3d3;
+  
+    &.clear-button {
+      --color: #f5a335;
+      --background: transparent;
+      --box-shadow: none;
+    }
+}
+  
+/* ion-title {
+   //background-color: #e0e0e0;
+} */
+
+ion-content {
+    ion-item {
+      --background: #fff;
+      --border-radius: 8px;
+      --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    text-align: center;
+}
+
+ion-menu-button {
+  --background: transparent; /* Para asegurarse de que el fondo sea transparente */
+  --color: #f5a335; /* Cambia este valor al color que prefieras */
+}
+
+/* Personalización del menú */
+ion-menu {
+  --background: #fff; /* Fondo blanco para el menú */
+}
+
+ion-list {
+  --ion-item-background: #f4f4f4; /* Fondo gris claro para los ítems de la lista */
+}
+
+ion-item {
+  --color: #f5a335; /* Color del texto en los ítems */
+}
+
+/* Estilos adicionales */
+.custom-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5a335, #fbbd61);
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-message {
+    margin-top: -20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.role-selection-container {
+    align-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.role-prompt {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.custom-select {
+    --background: #f5a335;
+    --color: #fff;
+    --placeholder-color: #fff;
+    --placeholder-opacity: 1;
+    --padding-start: 10px;
+    border-radius: 8px;
+}
+
+.community-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de mensaje de pasajero y conductor */
+.passenger-message, .driver-message, .seat-update-message {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* Estilos de los botones en el pie de página */
+.footer-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #d4d4d4;
+    border-top: 1px solid #ccc;
+}
+
+.footer-buttons ion-button {
+    --background: #f5a335;
+    --color: white;
+    font-size: 1.2rem;
+}
+
+.footer-buttons ion-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.footer-message {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: #333; /* Color del texto */
+  background-color: #f5f5f5; /* Fondo del footer */
+}
+
+.footer-message p {
+  margin: 0; /* Elimina el margen del párrafo */
+}

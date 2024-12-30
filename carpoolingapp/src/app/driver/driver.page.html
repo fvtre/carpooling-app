@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón con icono a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>  <!-- Botón de menú hamburguesa -->
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title>Conductor</ion-title>
+
+    <!-- Botón con icono de "salir" a la derecha -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="driver-message">
+    <h1>¡Bienvenido, {{ usuario?.nombre }}! </h1>
+    <p>
+      Gracias por formar parte de la comunidad de tellevoApp. 
+      Recuerda siempre conducir con precaución y respetar las normas de tránsito. 
+      Tu responsabilidad y la seguridad de tus pasajeros son lo más importante. 
+      Si necesitas cancelar un viaje, asegúrate de hacerlo con al menos 2 horas de anticipación para evitar multas.
+    </p>
+  </div>
+
+  <!-- Botón para ver el viaje agendado -->
+  <ion-button expand="block" (click)="createTrip()" [disabled]="viajeVigente">Crear Viaje</ion-button>
+
+  <ion-button expand="full" (click)="scheduleTrip()">Configurar Ruta</ion-button>
+
+  <!-- Mostrar el viaje vigente si existe -->
+  <ion-card *ngIf="viajeVigente">
+    <ion-card-header>
+      <ion-card-title>Viaje Vigente</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Conductor:</strong></ion-label>
+          <p>{{ viajeVigente.conductor }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Teléfono del Conductor:</strong></ion-label>
+          <p>{{ viajeVigente.telefonoConductor }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Comuna:</strong></ion-label>
+          <p>{{ viajeVigente.comuna }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Punto de Salida:</strong></ion-label>
+          <p>{{ viajeVigente.puntoSalida }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Fecha:</strong></ion-label>
+          <p>{{ viajeVigente.fecha }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Hora de Salida:</strong></ion-label>
+          <p>{{ viajeVigente.horaSalida }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Asientos Disponibles:</strong></ion-label>
+          <p>{{ viajeVigente.asientosDisponibles }}</p>
+        </ion-item>
+      </ion-list>
+  
+      <p *ngIf="viajeVencido" style="color: red;">
+        Este viaje está vencido y debe ser cancelado.
+      </p>
+
+      <!-- Botón para cancelar el viaje -->
+      <ion-button expand="full" color="danger" (click)="cancelarViaje()">
+        Cancelar Viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="viajeVigente && viajeVigente.pasajeros && viajeVigente.pasajeros.length > 0">
+    <ion-card-header>
+      <ion-card-title>Detalles de los Pasajeros</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <!-- Itera sobre cada pasajero en el array -->
+        <ion-item *ngFor="let pasajero of viajeVigente.pasajeros">
+          <ion-label>
+            <p><strong>Nombre:</strong> {{ pasajero.nombre }}</p>
+            <p><strong>ID:</strong> {{ pasajero.id }}</p>
+            <p><strong>Email:</strong> {{ pasajero.email }}</p>
+            <p><strong>Teléfono:</strong> {{ pasajero.telefono }}</p>
+            <p><strong>Asientos Reservados:</strong> {{ pasajero.asientosReservados }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>  
+
+  <!-- Si no hay viajes vigentes -->
+  <p *ngIf="!viajeVigente">No tienes viajes vigentes en este momento.</p>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

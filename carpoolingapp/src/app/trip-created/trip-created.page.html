@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón con icono a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>  <!-- Botón de menú hamburguesa -->
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title>Viaje Creado</ion-title>
+
+    <!-- Botón con icono de "salir" a la derecha -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="seat-update-message">
+    <h1>{{ usuario?.nombre }}</h1>
+    <p>
+      Aquí podrás ver la cantidad de asientos disponibles de tu viaje, que se irá actualizando a medida que los pasajeros agenden. 
+      Además, podrás consultar los datos básicos de quienes agenden el viaje para facilitar la comunicación.
+    </p>
+  </div>
+  <div class="seat-update-message"><h1>viaje</h1></div>
+  <div class="seat-update-message"><h1>pasajeros</h1></div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

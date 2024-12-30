@@ -1,0 +1,51 @@
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item >
+        <ion-button (click)="navigateAndClose('/home')">
+        <ion-icon slot="start" name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="navigateAndClose('/profile')">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="navigateAndClose('/faq')">
+        <ion-icon slot="start" name="help-circle"></ion-icon>
+        <ion-label>FAQ</ion-label>
+      </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button href="tel:+56985827304">
+        <ion-icon slot="start" name="call"></ion-icon>
+        <ion-label>Llamar al Soporte</ion-label>
+      </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+          <ion-label>Volver</ion-label>
+        </ion-button>
+      </ion-item>
+      <ion-item >
+        <ion-button (click)="logout()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Esta es la página principal, el área del contenido -->
+<ion-router-outlet id="main-content"></ion-router-outlet>

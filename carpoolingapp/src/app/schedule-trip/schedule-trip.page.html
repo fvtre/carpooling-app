@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agendar Viaje</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="passenger-message">
+    <h1>¡Hola {{ usuario?.nombre }}!</h1>
+    <p>Aquí puedes agendar tu viaje, recuerda nuestras normas de seguridad y de cancelación.</p>
+    
+    <ion-item>
+      <ion-label position="floating">Ingrese una dirección</ion-label>
+      <ion-input type="text" id="autocomplete"></ion-input>
+    </ion-item>
+    
+    <div class="button-container">
+      <ion-button expand="block" (click)="agregarDestino()">Agregar Dirección</ion-button>
+      <ion-button expand="block" (click)="requestCameraPermission()">Dirección QR</ion-button>
+    </div>
+
+    <div id="reader" style="width: 100%"></div>
+
+    <div *ngIf="destinos.length > 0">
+      <h2>Direcciones Agregadas:</h2>
+      <ul style="list-style-type: none; padding: 0;">
+        <li *ngFor="let destino of destinos; let i = index" style="margin-bottom: 10px;">
+          {{ i + 1 }}. {{ destino }}
+        </li>
+      </ul>
+    </div>
+
+    <ion-button expand="full" (click)="calcularRuta()" [disabled]="destinos.length === 0">Calcular Ruta</ion-button>
+  </div>
+
+  <div id="map" style="height: 400px;"></div>
+  <div id="trayecto"></div>
+
+  <div *ngIf="tiempoTotal">
+    <h2>{{ tiempoTotal }}</h2>
+  </div>
+
+  <div *ngIf="distanciaTotal">
+    <h2>{{ distanciaTotal }}</h2>
+  </div>
+
+  <div *ngIf="indicaciones.length > 0">
+    <h2>Instrucciones para llegar a {{ destinos[destinos.length - 1] }}</h2>
+    <ul style="list-style-type: none; padding: 0;">
+      <li *ngFor="let paso of indicaciones; let i = index" (click)="goToStep(i)" style="margin-bottom: 10px;">
+        <span [innerHTML]="paso.instrucciones"></span> ({{ paso.distancia }}, {{ paso.duracion }})
+      </li>
+    </ul>
+  </div>
+  <ion-button expand="full" color="danger" (click)="finalizarViaje()">
+    Finalizar Viaje
+  </ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

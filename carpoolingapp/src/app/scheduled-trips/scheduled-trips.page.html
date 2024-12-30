@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón con icono a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>  <!-- Botón de menú hamburguesa -->
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title>Viaje Agendado</ion-title>
+
+    <!-- Botón con icono de "salir" a la derecha -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Mensaje de bienvenida -->
+  <div class="passenger-message">
+    <h1>¡Hola {{ usuario?.nombre }}!</h1>
+    <p>
+      Aquí puedes ver tu viaje, recuerda nuestras normas de seguridad y de cancelación.
+    </p>
+  </div>
+
+  
+  <!-- Mostrar pasajeros y asientos reservados -->
+  <ion-card *ngIf="viajeAgendado && viajeAgendado.pasajeros && viajeAgendado.pasajeros.length > 0">
+    <ion-card-header>
+      <ion-card-title>Cantidad de Asientos Reservados</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let pasajero of viajeAgendado.pasajeros">
+          <ion-label>
+            <h2>{{ pasajero.nombre }}</h2>
+            <p>Asientos Reservados: {{ pasajero['asientosReservados'] || 'No especificado' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- Información del viaje agendado -->
+  <ion-card *ngIf="viajeAgendado">
+    <ion-card-header>
+      <ion-card-title>Detalles del Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>Conductor</h2>
+            <p>{{ viajeAgendado.conductor }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Telefono Conductor</h2>
+            <p>{{ viajeAgendado.telefonoConductor }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Punto de Partida</h2>
+            <p>{{ viajeAgendado.puntoSalida }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Destino</h2>
+            <p>{{ viajeAgendado.direccion }} Comuna: {{ viajeAgendado.comuna }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Fecha</h2>
+            <p>{{ viajeAgendado.fecha | date: 'dd/MM/yyyy' }} a las  {{ viajeAgendado.horaSalida }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h2>Asientos Disponibles</h2>
+            <p>{{ viajeAgendado.asientosDisponibles }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+    <ion-button expand="full" color="danger" (click)="confirmCancel()" [disabled]="evaluar">
+      Cancelar viaje
+    </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje si no hay viaje agendado -->
+  <ion-card *ngIf="!viajeAgendado">
+    <ion-card-header>
+      <ion-card-title>No hay viaje agendado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>No se ha encontrado ningún viaje agendado en este momento.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje adicional si no hay viaje agendado -->
+  <div class="passenger-message" *ngIf="!viajeAgendado">
+    <p>No tienes viajes agendados actualmente.</p>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

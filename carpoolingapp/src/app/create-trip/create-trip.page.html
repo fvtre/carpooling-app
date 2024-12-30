@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón con icono a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>  <!-- Botón de menú hamburguesa -->
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title>Crea tu Viaje</ion-title>
+
+    <!-- Botón con icono de "salir" a la derecha -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/icon/icono.png" style="width: 62px; height: 62px;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="seat-update-message">
+    <h1>{{ usuario?.nombre }}</h1>
+    <p>{{ usuario?.nombre }} aquí podrás crear tu viaje.</p>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input [(ngModel)]="viaje.direccion"></ion-input>
+  </ion-item>
+
+  <!-- Selector múltiple para las comunas de la Región Metropolitana -->
+  <ion-item>
+    <ion-label>Comuna</ion-label>
+    <ion-select [(ngModel)]="viaje.comuna" interface="action-sheet" multiple="true">
+      <ion-select-option value="Cerrillos">Cerrillos</ion-select-option>
+      <ion-select-option value="Cerro Navia">Cerro Navia</ion-select-option>
+      <ion-select-option value="Conchalí">Conchalí</ion-select-option>
+      <ion-select-option value="El Bosque">El Bosque</ion-select-option>
+      <ion-select-option value="Estación Central">Estación Central</ion-select-option>
+      <ion-select-option value="Huechuraba">Huechuraba</ion-select-option>
+      <ion-select-option value="Independencia">Independencia</ion-select-option>
+      <ion-select-option value="La Cisterna">La Cisterna</ion-select-option>
+      <ion-select-option value="La Florida">La Florida</ion-select-option>
+      <ion-select-option value="La Granja">La Granja</ion-select-option>
+      <ion-select-option value="La Pintana">La Pintana</ion-select-option>
+      <ion-select-option value="La Reina">La Reina</ion-select-option>
+      <ion-select-option value="Las Condes">Las Condes</ion-select-option>
+      <ion-select-option value="Lo Barnechea">Lo Barnechea</ion-select-option>
+      <ion-select-option value="Lo Espejo">Lo Espejo</ion-select-option>
+      <ion-select-option value="Lo Prado">Lo Prado</ion-select-option>
+      <ion-select-option value="Macul">Macul</ion-select-option>
+      <ion-select-option value="Maipú">Maipú</ion-select-option>
+      <ion-select-option value="Ñuñoa">Ñuñoa</ion-select-option>
+      <ion-select-option value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</ion-select-option>
+      <ion-select-option value="Peñalolén">Peñalolén</ion-select-option>
+      <ion-select-option value="Providencia">Providencia</ion-select-option>
+      <ion-select-option value="Pudahuel">Pudahuel</ion-select-option>
+      <ion-select-option value="Quilicura">Quilicura</ion-select-option>
+      <ion-select-option value="Quinta Normal">Quinta Normal</ion-select-option>
+      <ion-select-option value="Recoleta">Recoleta</ion-select-option>
+      <ion-select-option value="Renca">Renca</ion-select-option>
+      <ion-select-option value="San Bernardo">San Bernardo</ion-select-option>
+      <ion-select-option value="San Joaquín">San Joaquín</ion-select-option>
+      <ion-select-option value="San Miguel">San Miguel</ion-select-option>
+      <ion-select-option value="San Ramón">San Ramón</ion-select-option>
+      <ion-select-option value="Santiago">Santiago</ion-select-option>
+      <ion-select-option value="Vitacura">Vitacura</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Punto de salida</ion-label>
+    <ion-input [(ngModel)]="viaje.puntoSalida"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-input [(ngModel)]="viaje.fecha" type="date"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Hora de salida</ion-label>
+    <ion-input [(ngModel)]="viaje.horaSalida" type="time"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Asientos disponibles</ion-label>
+    <ion-select [(ngModel)]="viaje.asientosDisponibles" interface="action-sheet" multiple="true">
+    <ion-select-option value="1">1</ion-select-option>
+    <ion-select-option value="2">2</ion-select-option>
+    <ion-select-option value="3">3</ion-select-option>
+    <ion-select-option value="4">4</ion-select-option>
+  </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="crearViaje()" [disabled]="!isFormComplete()">
+    Crear Viaje
+  </ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-message">
+      <p>Developed by Allanqaeda Devs</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>
